@@ -34,3 +34,132 @@ POST http://localhost:1337/api/auth/local/register
     "email": "test@test.com",
     "password": "Password.12345"
 }
+
+//GraphQL queries and mutations
+//GET
+query {
+  movies {
+    data {
+      attributes {
+        title
+        description
+        actors {
+          data {
+            id
+            attributes {
+              lastName
+              firstName
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+//GET ONLY ONE WITH FIRST LETTER IS H
+query {
+  movies(filters: {
+    title: { startsWith: "H" }
+  }) {
+    data {
+      attributes {
+        title
+        description
+        actors {
+          data {
+            id
+            attributes {
+              lastName
+              firstName
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+//POST
+mutation createMovie {
+  createMovie(data: {title: "Hello"}) {
+    data {
+      id
+      attributes {
+        title
+      }
+    }
+  }
+}
+
+//UPDATE
+mutation updateMovie {
+  updateMovie(id: "1", data: {title: "HellowWold"}) {
+    data {
+      id
+      attributes {
+        title
+      }
+    }
+  }
+}
+
+//DELETE
+mutation deleteMovie {
+  deleteMovie(id: 1) {
+    data {
+      id
+      attributes {
+        title
+      }
+    }
+  }
+}
+
+//CREATION USER
+mutation {
+  register(
+    input: {
+      username: "alloyuser1"
+      email: "email1@gmail.com"
+      password: "password.12345"
+    }
+  ) {
+    jwt
+    user {
+      username
+      email
+    }
+  }
+}
+
+//LOGIN
+mutation {
+  login(input: { identifier: "email1@gmail.com", password: "password.12345" }) {
+    jwt
+  }
+}
+
+//GET WITH AUTH
+//ADD JWT IN HEADER
+{"Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNjk5NDUzMzg3LCJleHAiOjE3MDIwNDUzODd9.Zwl8dWn3FLJY9EgWOuBb7vM3EzM3JTiuQ-lpSpU659w"}
+//GET
+query {
+  movies {
+    data {
+      attributes {
+        title
+        description
+        actors {
+          data {
+            id
+            attributes {
+              lastName
+              firstName
+            }
+          }
+        }
+      }
+    }
+  }
+}
