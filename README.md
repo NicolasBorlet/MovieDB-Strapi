@@ -35,8 +35,8 @@ POST http://localhost:1337/api/auth/local/register
     "password": "Password.12345"
 }
 
-//GraphQL queries and mutations
-//GET
+# GraphQL queries and mutations
+## GET
 query {
   movies {
     data {
@@ -57,7 +57,7 @@ query {
   }
 }
 
-//GET ONLY ONE WITH FIRST LETTER IS H
+## GET ONLY ONE WITH FIRST LETTER IS H
 query {
   movies(filters: {
     title: { startsWith: "H" }
@@ -80,7 +80,7 @@ query {
   }
 }
 
-//POST
+## POST
 mutation createMovie {
   createMovie(data: {title: "Hello"}) {
     data {
@@ -92,7 +92,7 @@ mutation createMovie {
   }
 }
 
-//UPDATE
+## UPDATE
 mutation updateMovie {
   updateMovie(id: "1", data: {title: "HellowWold"}) {
     data {
@@ -104,7 +104,7 @@ mutation updateMovie {
   }
 }
 
-//DELETE
+## DELETE
 mutation deleteMovie {
   deleteMovie(id: 1) {
     data {
@@ -116,7 +116,7 @@ mutation deleteMovie {
   }
 }
 
-//CREATION USER
+## CREATION USER
 mutation {
   register(
     input: {
@@ -133,17 +133,17 @@ mutation {
   }
 }
 
-//LOGIN
+## LOGIN
 mutation {
   login(input: { identifier: "email1@gmail.com", password: "password.12345" }) {
     jwt
   }
 }
 
-//GET WITH AUTH
-//ADD JWT IN HEADER
+## GET WITH AUTH
+#### ADD JWT IN HEADER
 {"Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNjk5NDUzMzg3LCJleHAiOjE3MDIwNDUzODd9.Zwl8dWn3FLJY9EgWOuBb7vM3EzM3JTiuQ-lpSpU659w"}
-//GET
+#### GET
 query {
   movies {
     data {
