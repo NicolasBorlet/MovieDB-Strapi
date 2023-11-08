@@ -1,0 +1,36 @@
+GET  https://api.themoviedb.org/3/discover/movie
+
+GET http://localhost:1337/api/movies
+
+GET http://localhost:1337/api/movies?populate=*
+
+GET http://localhost:1337/api/movies?populate=actors
+
+GET http://localhost:1337/api/movies?filters[title][$startsWith]=H
+
+GET http://localhost:1337/api/movies/1?populate=actors
+
+POST http://localhost:1337/api/movies
+{"data": 
+    {"createdAt": "2023-11-08T08:48:30.533Z",
+            "updatedAt": "2023-11-08T09:49:26.842Z",
+            "publishedAt": "2023-11-08T08:49:54.577Z",
+            "title": "API",
+            "description": "Super cours d'API youhou",
+            "releaseDate": "2023-11-08",
+            "director": "BNI"
+    }
+}
+
+POST http://localhost:1337/api/auth/local
+{
+    "identifier" : "nicolas.borlet7@gmail.com",
+    "password" : "Buran.73600"
+}
+
+POST http://localhost:1337/api/auth/local/register
+{
+    "username": "Kapman",
+    "email": "test@test.com",
+    "password": "Password.12345"
+}
